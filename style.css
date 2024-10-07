@@ -5,6 +5,7 @@
 html,
 body {
   touch-action: manipulation;
+  text-size-adjust: none;
 }
 
 body {
@@ -34,6 +35,6 @@ button.display {
   background-color: #111111;
   border: solid 3px #212121;
   padding: 10px;
-  font-size: 22px;
+  font-size: 24px;
   word-break: break-all;
 }
