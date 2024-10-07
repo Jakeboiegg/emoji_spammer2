@@ -1,22 +1,4 @@
 {
-  "name": "emoji spammer 2",
-  "short_name": "emoji spammer",
-  "version": "1.0.0",
-  "description": "spamming, optimized for mobile",
-  "start_url": "/index.html",
-  "display": "standalone",
-  "background_color": "#FFFFFF", // Adjust as necessary
-  "theme_color": "#FFFFFF", // Adjust as necessary
-  "icons": [
-    {
-      "src": "images/icon-48.png",
-      "sizes": "48x48",
-      "type": "image/png"
-    },
-    {
-      "src": "images/icon-128.png",
-      "sizes": "128x128",
-      "type": "image/png"
-    }
-  ]
+  "short_name": "Emoji Spam",
+  "name": "Emoji Spammer 2"
 }
