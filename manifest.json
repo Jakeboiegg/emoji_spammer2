@@ -1,5 +1,7 @@
 {
   "short_name": "Emoji Spam",
   "name": "Emoji Spammer 2",
-  "display": "standalone"
+  "display": "standalone",
+  "theme_color": "#1a1a1a",
+  "background_color": "#1a1a1a"
 }
