@@ -21,7 +21,7 @@ body {
 }
 
 button.display {
-  height: 170px;
+  /*height: 190px;*/
   width: 350px;
   background-color: #111111;
   border: solid 3px #212121;
