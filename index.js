@@ -8,6 +8,7 @@ var emoji_table = [
 var title = document.getElementById("title");
 var display = document.getElementById("display");
 var select = document.getElementById("emoji-type");
+var selected = "slayy"
 
 function update_emojies(desc) {
   for (emoji_dictionary of emoji_table) {
@@ -21,8 +22,7 @@ function update_emojies(desc) {
 }
 
 // initially,
-//display.innerHTML = emoji_spam;
-update_emojies("slayy")
+update_emojies(selected)
 
 for (var emoji_dictionary of emoji_table) {
   var option = document.createElement("option");
@@ -36,8 +36,13 @@ for (var emoji_dictionary of emoji_table) {
 display.addEventListener("click", function() {
   navigator.clipboard.writeText(display.innerHTML);
   title.innerHTML = "press text to copied";
-  update_emojies("slayy")
+  update_emojies(selected)
 });
+
+select.addEventListener("change", function(){
+  selected = select.value
+  update_emojies(selected)
+})
 
 //select.addEventListener("change", function() {
 //  var desc = select.value

@@ -37,3 +37,16 @@ button.display {
   font-size: 21px;
   word-break: break-all;
 }
+
+select.emoji-type {
+  width: 350px;
+  background-color: #111111;
+  color: #ffffff;
+  border: solid 3px #212121;
+  margin: 0px;
+  font-family: "Open Sans";
+  font-size: 30px;
+  margin-top: 10px;
+  padding: 5px;
+  text-align: center;
+}
