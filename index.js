@@ -34,13 +34,9 @@ for (var emoji_dictionary of emoji_table) {
 
 // after, initialise:
 display.addEventListener("click", function() {
-  navigator.clipboard.writeText(emoji_spam);
+  navigator.clipboard.writeText(display.innerHTML);
   title.innerHTML = "press text to copied";
-  var emoji_spam = emoji_spam_generator(
-    emoji_dictionary[1].emojies,
-    amount_to_spam,
-  );
-  display.innerHTML = emoji_spam;
+  update_emojies("slayy")
 });
 
 //select.addEventListener("change", function() {
