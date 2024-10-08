@@ -11,6 +11,7 @@ display.innerHTML = emoji_spam;
 display.addEventListener("click", function() {
   navigator.clipboard.writeText(emoji_spam);
   title.innerHTML = "press text to copied";
+  navigator.vibrate([50,10,50])
   emoji_spam = emoji_spam_generator(emoji_list, amount_to_spam);
   display.innerHTML = emoji_spam
 });
