@@ -2,6 +2,7 @@
 const cacheName = 'cache-v1';
 // List the files to precache
 const precacheResources = [
+  "/",
   "/fonts/OpenSans.ttf",
   "/fonts/SpaceGrotesk.ttf",
   "/images/favicon-128.png",
