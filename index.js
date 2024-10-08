@@ -3,26 +3,30 @@ import { emoji_spam_generator } from "./emoji_generator.js";
 var amount_to_spam = 12 * 20;
 var emoji_table = [
   { emojies: ["🔥", "🥰", "🌈", "✨", "💅", "✅"], desc: "slayy" },
+  { emojies: ["🇺🇸", "🦅"], desc: "freedom" },
+  { emojies: ["🧊", "🥶"], desc: "ice_cold" },
   { emojies: ["💀"], desc: "skull" },
+  { emojies: ["🗣️"], desc: "yapp" },
+  { emojies: ["💤"], desc: "no_reaction" },
 ];
 var title = document.getElementById("title");
 var display = document.getElementById("display");
 var select = document.getElementById("emoji-type");
-var selected = "slayy"
+var selected = "slayy";
 
 function update_emojies(desc) {
   for (emoji_dictionary of emoji_table) {
     if (emoji_dictionary.desc == desc) {
-      var emoji_list = emoji_dictionary.emojies
-      break
+      var emoji_list = emoji_dictionary.emojies;
+      break;
     }
   }
-  var emoji_spam = emoji_spam_generator(emoji_list, amount_to_spam)
-  display.innerHTML = emoji_spam
+  var emoji_spam = emoji_spam_generator(emoji_list, amount_to_spam);
+  display.innerHTML = emoji_spam;
 }
 
 // initially,
-update_emojies(selected)
+update_emojies(selected);
 
 for (var emoji_dictionary of emoji_table) {
   var option = document.createElement("option");
@@ -36,13 +40,13 @@ for (var emoji_dictionary of emoji_table) {
 display.addEventListener("click", function() {
   navigator.clipboard.writeText(display.innerHTML);
   title.innerHTML = "press text to copied";
-  update_emojies(selected)
+  update_emojies(selected);
 });
 
-select.addEventListener("change", function(){
-  selected = select.value
-  update_emojies(selected)
-})
+select.addEventListener("change", function() {
+  selected = select.value;
+  update_emojies(selected);
+});
 
 //select.addEventListener("change", function() {
 //  var desc = select.value
@@ -52,7 +56,6 @@ select.addEventListener("change", function(){
 //    }
 //  }
 //});
-
 
 // Register the service worker
 if ("serviceWorker" in navigator) {
