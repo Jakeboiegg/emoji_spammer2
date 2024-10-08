@@ -2,9 +2,16 @@ import { emoji_spam_generator } from "./emoji_generator.js";
 
 var amount_to_spam = 12 * 20;
 var emoji_table = [
-  { emojies: ["🔥", "🥰", "🌈", "✨", "💅", "✅"], desc: "slayy" },
-  { emojies: ["🇺🇸", "🦅"], desc: "freedom" },
+  { emojies: ["🔥", "🥰", "🌈", "✨", "💅", "✅", "💯"], desc: "slayy" },
+  {
+    emojies: ["🥳", "🤠", "😌", "🤪", "😜", "😝", "😘", "😛", "😅"],
+    desc: "hehe",
+  },
+  { emojies: ["😞", "😣", "😓", "😣", "😡", "😠", "😡", "😩"], desc: "ugrh" },
+  { emojies: ["🇺🇸", "🦅", "🔫"], desc: "freedom" },
   { emojies: ["🧊", "🥶"], desc: "ice_cold" },
+  { emojies: ["😭", "😱", "🙏"], desc: "disappointed" },
+  { emojies: ["💤", "🛏️", "🥱"], desc: "light_work" },
   { emojies: ["💀"], desc: "skull" },
   { emojies: ["🗣️"], desc: "yapp" },
   { emojies: ["💤"], desc: "no_reaction" },
