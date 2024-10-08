@@ -14,25 +14,55 @@ const precacheResources = [
   "style.css"
 ]; 
 
-// When the service worker is installing, open the cache and add the precache resources to it
+// Install event: Cache resources
 self.addEventListener('install', (event) => {
-  //console.log('Service worker install event!');
-  event.waitUntil(caches.open(cacheName).then((cache) => cache.addAll(precacheResources)));
+  event.waitUntil(
+    caches.open(cacheName).then((cache) => {
+      return cache.addAll(precacheResources);
+    })
+  );
 });
 
+// Activate event: Cleanup old caches if necessary
 self.addEventListener('activate', (event) => {
-  //console.log('Service worker activate event!');
+  const cacheWhitelist = [cacheName];  // Only keep the current cache version
+  
+  event.waitUntil(
+    caches.keys().then((cacheNames) => {
+      return Promise.all(
+        cacheNames.map((cache) => {
+          if (!cacheWhitelist.includes(cache)) {
+            // Delete old cache that isn't in the whitelist
+            return caches.delete(cache);
+          }
+        })
+      );
+    })
+  );
 });
 
-// When there's an incoming fetch request, try and respond with a precached resource, otherwise fall back to the network
+// Fetch event: Serve cache first, then update the cache with network response
 self.addEventListener('fetch', (event) => {
-  //console.log('Fetch intercepted for:', event.request.url);
   event.respondWith(
     caches.match(event.request).then((cachedResponse) => {
-      if (cachedResponse) {
-        return cachedResponse;
-      }
-      return fetch(event.request);
-    }),
+      const fetchPromise = fetch(event.request).then((networkResponse) => {
+        // Check if the response is valid
+        if (!networkResponse || networkResponse.status !== 200 || networkResponse.type !== 'basic') {
+          return networkResponse;  // Return the network response if itÕs invalid for caching
+        }
+        
+        // Update the cache with the new response
+        caches.open(cacheName).then((cache) => {
+          cache.put(event.request, networkResponse.clone());
+        });
+        
+        return networkResponse;  // Return the fetched network response
+      }).catch(() => {
+        // Optional: handle network errors (e.g., display an offline page)
+      });
+      
+      // Return the cached response first, and update the cache in the background
+      return cachedResponse || fetchPromise;
+    })
   );
 });
