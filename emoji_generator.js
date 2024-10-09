@@ -8,6 +8,9 @@ export function emoji_spam_generator(list, total_length) {
   }
 
   function choose_random_item(list) {
+    if (list == null) {
+      return ""
+    }
     var item_index = randomint(0, list.length - 1);
     var item = list[item_index];
     return item;
