@@ -17,6 +17,17 @@ body {
   text-size-adjust: none;
 }
 
+textarea,
+input,
+select {
+  user-select: text;
+  -webkit-user-select: text;
+}
+
+h1 {
+  margin-top: 0px;
+}
+
 body {
   background-color: #1a1a1a;
   color: #ffffff;
@@ -34,6 +45,7 @@ button.display {
   width: 350px;
   background-color: #111111;
   border: solid 3px #212121;
+  border-radius: 10px;
   padding: 10px;
   font-size: 21px;
   word-break: break-all;
@@ -45,6 +57,7 @@ select.emoji-type {
   background-color: #111111;
   color: #ffffff;
   border: solid 3px #212121;
+  border-radius: 10px;
   margin: 0px;
   font-family: "Space Grotesk";
   font-size: 30px;
@@ -60,6 +73,7 @@ textarea.user-custom-emojies {
   background-color: #111111;
   color: #ffffff;
   border: solid 3px #212121;
+  border-radius: 10px;
   margin: 0px;
   font-family: "Space Grotesk";
   font-size: 30px;
