@@ -16,6 +16,7 @@ var emoji_table = [
   { emojies: "💀", desc: "skull" },
   { emojies: "🗣️", desc: "yapp" },
   { emojies: "💤", desc: "no_reaction" },
+  { emojies: "custom", desc: "custom" },
 ];
 var title = document.getElementById("title");
 var display = document.getElementById("display");
@@ -25,7 +26,7 @@ var selected = "slayy";
 function update_emojies(desc) {
   for (emoji_dictionary of emoji_table) {
     if (emoji_dictionary.desc == desc) {
-      var emoji_list = split_emoji_string(emoji_dictionary.emojies)
+      var emoji_list = split_emoji_string(emoji_dictionary.emojies);
       break;
     }
   }
@@ -36,6 +37,7 @@ function update_emojies(desc) {
 // initially,
 update_emojies(selected);
 
+// initialise the selection
 for (var emoji_dictionary of emoji_table) {
   var option = document.createElement("option");
   var emoji_text = emoji_dictionary.emojies;
@@ -53,17 +55,19 @@ display.addEventListener("click", function() {
 
 select.addEventListener("change", function() {
   selected = select.value;
-  update_emojies(selected);
+  if (selected == "custom") {
+    var input_textarea = document.createElement("textarea");
+    input_textarea.className = "user-custom-emojies";
+    input_textarea.id = "user-custom-emojies";
+    document.body.appendChild(input_textarea);
+  } else {
+    var input_textarea = document.getElementById("user-custom-emojies");
+    if (input_textarea) {
+      input_textarea.remove();
+    }
+    update_emojies(selected);
+  }
 });
-
-//select.addEventListener("change", function() {
-//  var desc = select.value
-//  for (emoji_dictionary of emoji_table) {
-//    if (desc == emoji_dictionary.desc) {
-//      emoji_spam = emoji_spam_generator()
-//    }
-//  }
-//});
 
 // Register the service worker
 if ("serviceWorker" in navigator) {
