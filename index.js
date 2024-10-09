@@ -91,11 +91,14 @@ select.addEventListener("change", function() {
   selected = select.value;
   if (selected == "custom") {
     addTextarea();
-    update_display_with_custom_input()
-    var input_textarea = document.getElementById("user-custom-emojies")
+    update_display_with_custom_input();
+    var input_textarea = document.getElementById("user-custom-emojies");
     input_textarea.addEventListener("input", function() {
       update_display_with_custom_input();
       localStorage.setItem("custom-emojies", input_textarea.value);
+    });
+    input_textarea.addEventListener("touchend", function() {
+      this.focus();
     });
   } else {
     removeTextarea();
