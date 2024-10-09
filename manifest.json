@@ -3,5 +3,10 @@
   "name": "Emoji Spammer 2",
   "display": "standalone",
   "theme_color": "#1a1a1a",
-  "background_color": "#1a1a1a"
+  "background_color": "#1a1a1a",
+  "icons": [{
+    "src":"/images/icon-512.png",
+    "sizes":"512x512",
+    "type":"image/png"
+  }]
 }
