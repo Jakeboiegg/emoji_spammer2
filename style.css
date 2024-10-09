@@ -40,7 +40,23 @@ button.display {
 }
 
 select.emoji-type {
+  height: 57px;
   width: 350px;
+  background-color: #111111;
+  color: #ffffff;
+  border: solid 3px #212121;
+  margin: 0px;
+  font-family: "Space Grotesk";
+  font-size: 30px;
+  margin-top: 10px;
+  padding: 5px;
+  text-align: center;
+}
+
+textarea.user-custom-emojies {
+  resize: none;
+  height: 41px;
+  width: 334px;
   background-color: #111111;
   color: #ffffff;
   border: solid 3px #212121;
