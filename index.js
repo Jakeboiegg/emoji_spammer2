@@ -35,7 +35,7 @@ function update_display_with_selected(desc) {
 }
 
 function update_display_with_custom_input() {
-  var input_textarea = document.getElementById("user-custom-emojies")
+  var input_textarea = document.getElementById("user-custom-emojies");
   if (input_textarea) {
     display.innerHTML = emoji_spam_generator(
       split_emoji_string(input_textarea.value),
@@ -48,11 +48,8 @@ function addTextarea() {
   var input_textarea = document.createElement("textarea");
   input_textarea.className = "user-custom-emojies";
   input_textarea.id = "user-custom-emojies";
+  input_textarea.value = localStorage.getItem("custom-emojies");
   document.body.appendChild(input_textarea);
-
-  input_textarea.addEventListener("input", function() {
-    update_display_with_custom_input();
-  });
 }
 
 function removeTextarea() {
@@ -74,6 +71,11 @@ for (var emoji_dictionary of emoji_table) {
   select.add(option);
 }
 
+// initialise local storage
+if (localStorage.getItem("custom-emojies") == null) {
+  localStorage.setItem("custom-emojies", "");
+}
+
 // after, initialise:
 display.addEventListener("click", function() {
   navigator.clipboard.writeText(display.innerHTML);
@@ -89,6 +91,12 @@ select.addEventListener("change", function() {
   selected = select.value;
   if (selected == "custom") {
     addTextarea();
+    update_display_with_custom_input()
+    var input_textarea = document.getElementById("user-custom-emojies")
+    input_textarea.addEventListener("input", function() {
+      update_display_with_custom_input();
+      localStorage.setItem("custom-emojies", input_textarea.value);
+    });
   } else {
     removeTextarea();
     update_display_with_selected(selected);
