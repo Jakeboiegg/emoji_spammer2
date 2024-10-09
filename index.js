@@ -23,7 +23,7 @@ var display = document.getElementById("display");
 var select = document.getElementById("emoji-type");
 var selected = "slayy";
 
-function update_emojies(desc) {
+function update_display_with_selected(desc) {
   for (emoji_dictionary of emoji_table) {
     if (emoji_dictionary.desc == desc) {
       var emoji_list = split_emoji_string(emoji_dictionary.emojies);
@@ -34,8 +34,36 @@ function update_emojies(desc) {
   display.innerHTML = emoji_spam;
 }
 
+function update_display_with_custom_input() {
+  var input_textarea = document.getElementById("user-custom-emojies")
+  if (input_textarea) {
+    display.innerHTML = emoji_spam_generator(
+      split_emoji_string(input_textarea.value),
+      amount_to_spam,
+    );
+  }
+}
+
+function addTextarea() {
+  var input_textarea = document.createElement("textarea");
+  input_textarea.className = "user-custom-emojies";
+  input_textarea.id = "user-custom-emojies";
+  document.body.appendChild(input_textarea);
+
+  input_textarea.addEventListener("input", function() {
+    update_display_with_custom_input();
+  });
+}
+
+function removeTextarea() {
+  var input_textarea = document.getElementById("user-custom-emojies");
+  if (input_textarea) {
+    input_textarea.remove();
+  }
+}
+
 // initially,
-update_emojies(selected);
+update_display_with_selected(selected);
 
 // initialise the selection
 for (var emoji_dictionary of emoji_table) {
@@ -50,22 +78,20 @@ for (var emoji_dictionary of emoji_table) {
 display.addEventListener("click", function() {
   navigator.clipboard.writeText(display.innerHTML);
   title.innerHTML = "press text to copied";
-  update_emojies(selected);
+  if (selected == "custom") {
+    update_display_with_custom_input();
+  } else {
+    update_display_with_selected(selected);
+  }
 });
 
 select.addEventListener("change", function() {
   selected = select.value;
   if (selected == "custom") {
-    var input_textarea = document.createElement("textarea");
-    input_textarea.className = "user-custom-emojies";
-    input_textarea.id = "user-custom-emojies";
-    document.body.appendChild(input_textarea);
+    addTextarea();
   } else {
-    var input_textarea = document.getElementById("user-custom-emojies");
-    if (input_textarea) {
-      input_textarea.remove();
-    }
-    update_emojies(selected);
+    removeTextarea();
+    update_display_with_selected(selected);
   }
 });
 
