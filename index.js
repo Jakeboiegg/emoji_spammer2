@@ -1,20 +1,21 @@
 import { emoji_spam_generator } from "./emoji_generator.js";
+import { split_emoji_string } from "./emoji_splitter.js";
 
 var amount_to_spam = 12 * 20;
 var emoji_table = [
-  { emojies: ["🔥", "🥰", "🌈", "✨", "💅", "✅", "💯"], desc: "slayy" },
+  { emojies: "🔥🥰🌈✨💅✅💯", desc: "slayy" },
   {
-    emojies: ["🥳", "🤠", "😌", "🤪", "😜", "😝", "😘", "😛", "😅"],
+    emojies: "🥳🤠😌🤪😜😝😘😛😅",
     desc: "hehe",
   },
-  { emojies: ["😞", "😣", "😓", "😣", "😡", "😠", "😡", "😩"], desc: "ugrh" },
-  { emojies: ["🇺🇸", "🦅", "🔫"], desc: "freedom" },
-  { emojies: ["🧊", "🥶"], desc: "ice_cold" },
-  { emojies: ["😭", "😱", "🙏"], desc: "disappointed" },
-  { emojies: ["💤", "🛏️", "🥱"], desc: "light_work" },
-  { emojies: ["💀"], desc: "skull" },
-  { emojies: ["🗣️"], desc: "yapp" },
-  { emojies: ["💤"], desc: "no_reaction" },
+  { emojies: "😞😣😓😣😡😠😡😩", desc: "ugrh" },
+  { emojies: "🇺🇸🦅🔫", desc: "freedom" },
+  { emojies: "🧊🥶", desc: "ice_cold" },
+  { emojies: "😭😱🙏", desc: "disappointed" },
+  { emojies: "💤🛏️🥱", desc: "light_work" },
+  { emojies: "💀", desc: "skull" },
+  { emojies: "🗣️", desc: "yapp" },
+  { emojies: "💤", desc: "no_reaction" },
 ];
 var title = document.getElementById("title");
 var display = document.getElementById("display");
@@ -24,7 +25,7 @@ var selected = "slayy";
 function update_emojies(desc) {
   for (emoji_dictionary of emoji_table) {
     if (emoji_dictionary.desc == desc) {
-      var emoji_list = emoji_dictionary.emojies;
+      var emoji_list = split_emoji_string(emoji_dictionary.emojies)
       break;
     }
   }
@@ -37,7 +38,7 @@ update_emojies(selected);
 
 for (var emoji_dictionary of emoji_table) {
   var option = document.createElement("option");
-  var emoji_text = emoji_dictionary.emojies.join("");
+  var emoji_text = emoji_dictionary.emojies;
   option.text = emoji_text;
   option.value = emoji_dictionary.desc;
   select.add(option);

@@ -1,0 +1,7 @@
+{
+  "name": "emoji_spammer2",
+  "type": "module",
+  "dependencies": {
+    "emoji-regex": "^10.4.0"
+  }
+}
