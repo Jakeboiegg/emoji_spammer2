@@ -11,18 +11,18 @@
   src: url("fonts/OpenSans.ttf");
 }
 
-html,
-body {
-  touch-action: manipulation;
-  text-size-adjust: none;
-}
+/*html,*/
+/*body {*/
+/*  touch-action: manipulation;*/
+/*  text-size-adjust: none;*/
+/*}*/
 
-textarea,
-input,
-select {
-  user-select: text;
-  -webkit-user-select: text;
-}
+/*textarea,*/
+/*input,*/
+/*select {*/
+/*  user-select: text;*/
+/*  -webkit-user-select: text;*/
+/*}*/
 
 h1 {
   margin-top: 0px;
